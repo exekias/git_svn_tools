@@ -6,11 +6,35 @@ svn_export_authors.sh
 Executed in a SVN path it exports every author's id and let you
 fill the file with username and email address:
 
-$ ./svn_export_authors.sh > authors.txt
+    $ ./svn_export_authors.sh > authors.txt
 
 Example output (authors.txt):
 
-/C=ES/ST=Zaragoza/L=Zaragoza/O=Zentyal/CN=cperez@zentyal.com = NAME <USER@DOMAIN>
+    /C=ES/ST=Zaragoza/L=Zaragoza/O=Zentyal/CN=cperez@zentyal.com = NAME <USER@DOMAIN>
 
 
+git_author.pl
+=============
+
+This script can be used in combination with "git svn clone" to dynamically set
+authors name and emails. It expects authors.txt file in the same path.
+
+For example during a checkout:
+
+    $ git svn clone --trunk=trunk http://svn.zentyal.org/zentyal/ --authors-prog=git_author.pl .
+
+or a rebase:
+
+    $ git svn rebase --authors-prog=git_author.pl
+
+
+git_fix_authors.sh
+==================
+
+Tool to fix authors name in an already imported Git, you need to modify
+this part with all the users you want to change:
+
+    case ${GIT_AUTHOR_NAME} in
+        "Carlos Pérez-Aradros Herce") n="exekias" ; m="cperez@zentyal.com" ;;
+    esac
 
