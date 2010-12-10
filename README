@@ -1,0 +1,16 @@
+Help tools to import SVN repositories into Git:
+
+svn_export_authors.sh
+=====================
+
+Executed in a SVN path it exports every author's id and let you
+fill the file with username and email address:
+
+$ ./svn_export_authors.sh > authors.txt
+
+Example output (authors.txt):
+
+/C=ES/ST=Zaragoza/L=Zaragoza/O=Zentyal/CN=cperez@zentyal.com = NAME <USER@DOMAIN>
+
+
+
